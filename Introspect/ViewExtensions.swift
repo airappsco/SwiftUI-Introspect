@@ -6,6 +6,7 @@ import AppKit
 import UIKit
 #endif
 
+@available(iOS 13.0, *)
 extension View {
     public func inject<SomeView>(_ view: SomeView) -> some View where SomeView: View {
         overlay(view.frame(width: 0, height: 0))
@@ -13,6 +14,7 @@ extension View {
 }
 
 #if canImport(UIKit)
+@available(iOS 13.0, *)
 extension View {
     
     /// Finds a `TargetView` from a `SwiftUI.View`
@@ -284,6 +286,7 @@ extension View {
 #if canImport(MapKit)
 import MapKit
 
+@available(iOS 13.0, *)
 extension View {
     /// Finds an `MKMapView` from a `SwiftUI.Map`
     @available(iOS 14, tvOS 14, macOS 11, *)

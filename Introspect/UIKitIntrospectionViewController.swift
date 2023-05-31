@@ -16,6 +16,7 @@ public class IntrospectionUIViewController: UIViewController {
 }
 
 /// This is the same logic as IntrospectionView but for view controllers. Please see details above.
+@available(iOS 13.0, *)
 public struct UIKitIntrospectionViewController<TargetViewControllerType: UIViewController>: UIViewControllerRepresentable {
     
     let selector: (IntrospectionUIViewController) -> TargetViewControllerType?
@@ -34,6 +35,7 @@ public struct UIKitIntrospectionViewController<TargetViewControllerType: UIViewC
     /// UIKit view controller. To workaround this, we wait until the runloop is done inserting the introspection view controller's
     /// view in the hierarchy, then run the selector. Finding the target view controller fails silently if the selector yields no result.
     /// This happens when the introspection view controller's view gets removed from the hierarchy.
+    @available(iOS 13.0, *)
     public func makeUIViewController(
         context: UIViewControllerRepresentableContext<UIKitIntrospectionViewController>
     ) -> IntrospectionUIViewController {
@@ -55,6 +57,7 @@ public struct UIKitIntrospectionViewController<TargetViewControllerType: UIViewC
     /// SwiftUI state changes after `makeUIViewController` will trigger this function, not
     /// `makeUIViewController`, so we need to call the handler again to allow re-customization
     /// based on the newest state.
+    @available(iOS 13.0, *)
     public func updateUIViewController(
         _ viewController: IntrospectionUIViewController,
         context: UIViewControllerRepresentableContext<UIKitIntrospectionViewController>

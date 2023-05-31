@@ -26,6 +26,7 @@ public class IntrospectionUIView: UIView {
 
 /// Introspection View that is injected into the UIKit hierarchy alongside the target view.
 /// After `updateUIView` is called, it calls `selector` to find the target view, then `customize` when the target view is found.
+@available(iOS 13.0, *)
 public struct UIKitIntrospectionView<TargetViewType: UIView>: UIViewRepresentable {
     
     /// Method that introspects the view hierarchy to find the target view.
@@ -48,6 +49,7 @@ public struct UIKitIntrospectionView<TargetViewType: UIView>: UIViewRepresentabl
     /// To workaround this, we wait until the runloop is done inserting the introspection view in the hierarchy, then run the selector.
     /// Finding the target view fails silently if the selector yields no result. This happens when the introspection view gets
     /// removed from the hierarchy.
+    @available(iOS 13.0, *)
     public func makeUIView(context: UIViewRepresentableContext<UIKitIntrospectionView>) -> IntrospectionUIView {
         let view = IntrospectionUIView()
         view.accessibilityLabel = "IntrospectionUIView<\(TargetViewType.self)>"
@@ -66,6 +68,7 @@ public struct UIKitIntrospectionView<TargetViewType: UIView>: UIViewRepresentabl
     /// SwiftUI state changes after `makeUIView` will trigger this function, not
     /// `makeUIView`, so we need to call the handler again to allow re-customization
     /// based on the newest state.
+    @available(iOS 13.0, *)
     public func updateUIView(
         _ view: IntrospectionUIView,
         context: UIViewRepresentableContext<UIKitIntrospectionView>
